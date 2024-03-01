@@ -1,0 +1,87 @@
+\documentclass[a4paper]{article}
+
+\usepackage[a4paper, total={18cm, 26cm}]{geometry}
+\usepackage[T1]{fontenc} % needed by beramono
+\usepackage{textcomp}
+% beramono.sty and MnSymbol.sty come with texlive-fonts-extra in Debian
+\usepackage[scaled=0.85]{beramono} % tt font supporting slshape and zero with dot
+\usepackage{MnSymbol} % fancy symbols for line-breaks
+\usepackage[utf8]{inputenc}
+\usepackage{listingsutf8}  % code listings, comes with texlive-latex-recommended
+%\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{verbatim}
+\usepackage{graphicx} % \includegraphics[width=\textwidth]{image.png}
+
+\protected\def\plusminus{\ensuremath{\pm}}
+\DeclareUnicodeCharacter{C2B1}{\plusminus}
+
+\lstset{
+  inputencoding=utf8,
+  literate={±}{\plusminus}1
+}
+
+\lstdefinestyle{bwC++}{
+  language=C++,morekeywords={concept,consteval,constinit,constexpr,co_await,co_return,co_yield,requires},
+  basicstyle=\ttfamily,
+  keywordstyle=\bfseries,
+  stringstyle=\slshape,
+  commentstyle=\slshape,
+  morecomment=[s][\bfseries\slshape]{/**}{*/},
+  tabsize=4,
+  showstringspaces=false,
+  breaklines=true, breakatwhitespace=true,
+  prebreak={\hbox{\quad$\rhookswarrow$}},
+  postbreak={\hbox{$\lhookrightarrow$}},
+  breakindent={-8pt}, breakautoindent=false,
+  numbers=left, numberstyle=\tiny,
+  frameshape={RYR}{N}{N}{YYY} %frame=tb,frameround=tttt
+}
+
+\lstdefinestyle{colorC++}{
+  language=C++,morekeywords={concept,consteval,constinit,constexpr,co_await,co_return,co_yield,requires},
+  basicstyle=\ttfamily,
+  keywordstyle=\textcolor{blue},
+  stringstyle=\slshape\textcolor{red!70!black},
+  commentstyle=\slshape\textcolor{green!50!black},
+  morecomment=[s][\bfseries\slshape\textcolor{green!50!black}]{/**}{*/},
+  tabsize=4,
+  showstringspaces=false,
+  breaklines=true, breakatwhitespace=true,
+  prebreak={\hbox{\quad\textcolor{red}{$\rhookswarrow$}}},
+  postbreak={\hbox{\textcolor{red}{$\lhookrightarrow$}}},
+  breakindent={-8pt}, breakautoindent=false,
+  numbers=left, numberstyle=\tiny,
+  frameshape={RYR}{N}{N}{YYY} %frame=tb,frameround=tttt
+}
+
+\lstdefinestyle{colorBash}{
+  language=bash,
+  basicstyle=\ttfamily,
+  keywordstyle=\textcolor{blue},
+  stringstyle=\slshape\textcolor{red!70!black},
+  commentstyle=\slshape\textcolor{green!50!black},
+  morecomment=[s][\bfseries\slshape\textcolor{green!50!black}]{/**}{*/},
+  tabsize=4,
+  showstringspaces=false,
+  breaklines=true, breakatwhitespace=true,
+  prebreak={\hbox{\quad\textcolor{red}{$\rhookswarrow$}}},
+  postbreak={\hbox{\textcolor{red}{$\lhookrightarrow$}}},
+  breakindent={-8pt}, breakautoindent=false,
+  numbers=left, numberstyle=\tiny,
+  frameshape={RYR}{N}{N}{YYY} %frame=tb,frameround=tttt
+}
+
+\title{number series}
+\author{Jens Emil Fink H øjriis}
+\begin{document}
+  \maketitle
+  \lstinputlisting[style=colorC++,caption={./number\_series.hpp}]{./number_series.hpp}
+  \lstinputlisting[style=colorC++,caption={./main.cpp}]{./main.cpp}
+  \lstinputlisting[style=colorC++,caption={./number\_series.cpp}]{./number_series.cpp}
+  \lstinputlisting[style=colorC++,caption={./number\_series\_bm.cpp}]{./number_series_bm.cpp}
+  \lstinputlisting[style=colorC++,caption={./number\_series\_test.cpp}]{./number_series_test.cpp}
+  \lstinputlisting[style=colorC++,caption={./sort\_bm.cpp}]{./sort_bm.cpp}
+  \lstinputlisting[style=colorBash,caption={./CMakeLists.txt}]{./CMakeLists.txt}
+  \lstinputlisting[style=colorBash,caption={./README.md}]{./README.md}
+\end{document}

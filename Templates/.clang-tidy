@@ -1,0 +1,5 @@
+---
+Checks:          '*,-fuchsia-*,-google-*,-zircon-*,-abseil-*,-modernize-use-trailing-return-type,-llvm-*,-hicpp-braces-around-statements,-readability-braces-around-statements'
+WarningsAsErrors: '1'
+HeaderFilterRegex: ''
+FormatStyle:     none
