@@ -3,6 +3,24 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include <doctest.h>
 
+template <int X>
+struct Fib
+{
+	static constexpr int value = Fib<X - 2>::value + Fib<X - 1>::value;
+};
+
+template<>
+struct Fib<0>
+{
+	static constexpr int value = 1;
+};
+
+template <>
+struct Fib<1>
+{
+	static constexpr int value = 1;
+};
+
 
 TEST_CASE("Runtime Fibonacci")
 {
@@ -15,7 +33,7 @@ TEST_CASE("Runtime Fibonacci")
 	REQUIRE(fib(40) == 165580141u);
 }
 
-/** TODO: uncomment and implement compile-time Fibonacci sequence
+// TODO: uncomment and implement compile-time Fibonacci sequence
 TEST_CASE("Compile-time Fibonacci")
 {
 	REQUIRE(Fib<0>::value == 1u);
@@ -26,4 +44,3 @@ TEST_CASE("Compile-time Fibonacci")
 	REQUIRE(Fib<5>::value == 8u);
 	REQUIRE(Fib<40>::value == 165580141u);
 }
-*/

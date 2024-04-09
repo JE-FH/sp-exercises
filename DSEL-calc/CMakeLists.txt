@@ -2,11 +2,21 @@
 # project specific logic here.
 #
 
-# Add source to this project's executable.
-add_executable (DSELCal "main.cpp" "expr.cpp" "op.hpp" "expr.hpp")
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_POSITION_INDEPENDENT_CODE ON)
+set(BUILD_SHARED_LIBS OFF)
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET session-1 PROPERTY CXX_STANDARD 20)
-endif()
+include(sanitizers.cmake)
+include(doctest.cmake)
+
+# Add source to this project's executable.
+add_executable(calculator_test "calculator_test.cpp" "calculator.cpp")
+target_link_libraries(calculator_test PRIVATE doctest::doctest_with_main)
+
+enable_testing()
+add_test(NAME calculator_test COMMAND calculator_test)
 
 # TODO: Add tests and install targets if needed.

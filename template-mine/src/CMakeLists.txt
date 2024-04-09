@@ -8,6 +8,8 @@ add_executable(fibonacci_test fibonacci_test.cpp)
 
 add_executable(power_test power_test.cpp)
 
+add_executable(prime_check prime_check.cpp)
+
 if (Boost_FOUND)
     add_executable(type_name_boost type_name_boost.cpp)
     add_test(NAME type_name_boost COMMAND type_name_boost)
