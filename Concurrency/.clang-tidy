@@ -1,0 +1,5 @@
+---
+Checks:          '*,-fuchsia-*,-google-*,-zircon-*,-abseil-*,-modernize-use-trailing-return-type,-llvm-*,-llvmlibc-*,-hicpp-uppercase-literal-suffix,-hicpp-braces-around-statements,-altera-unroll-loops
+WarningsAsErrors: '1'
+HeaderFilterRegex: ''
+FormatStyle:     none

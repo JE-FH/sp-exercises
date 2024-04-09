@@ -1,0 +1,89 @@
+\documentclass[a4paper]{article}
+
+\usepackage[a4paper, total={18cm, 26cm}]{geometry}
+\usepackage[T1]{fontenc} % needed by beramono
+\usepackage{textcomp}
+% beramono.sty and MnSymbol.sty come with texlive-fonts-extra in Debian
+\usepackage[scaled=0.85]{beramono} % tt font supporting slshape and zero with dot
+\usepackage{MnSymbol} % fancy symbols for line-breaks
+\usepackage[utf8]{inputenc}
+\usepackage{listingsutf8}  % code listings, comes with texlive-latex-recommended
+%\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{verbatim}
+\usepackage{graphicx} % \includegraphics[width=\textwidth]{image.png}
+
+\protected\def\plusminus{\ensuremath{\pm}}
+\DeclareUnicodeCharacter{C2B1}{\plusminus}
+
+\lstset{
+  inputencoding=utf8,
+  literate={±}{\plusminus}1
+}
+
+\lstdefinestyle{bwC++}{
+  language=C++,morekeywords={concept,consteval,constinit,constexpr,co_await,co_return,co_yield,requires},
+  basicstyle=\ttfamily,
+  keywordstyle=\bfseries,
+  stringstyle=\slshape,
+  commentstyle=\slshape,
+  morecomment=[s][\bfseries\slshape]{/**}{*/},
+  tabsize=4,
+  showstringspaces=false,
+  breaklines=true, breakatwhitespace=true,
+  prebreak={\hbox{\quad$\rhookswarrow$}},
+  postbreak={\hbox{$\lhookrightarrow$}},
+  breakindent={-8pt}, breakautoindent=false,
+  numbers=left, numberstyle=\tiny,
+  frameshape={RYR}{N}{N}{YYY} %frame=tb,frameround=tttt
+}
+
+\lstdefinestyle{colorC++}{
+  language=C++,morekeywords={concept,consteval,constinit,constexpr,co_await,co_return,co_yield,requires},
+  basicstyle=\ttfamily,
+  keywordstyle=\textcolor{blue},
+  stringstyle=\slshape\textcolor{red!70!black},
+  commentstyle=\slshape\textcolor{green!50!black},
+  morecomment=[s][\bfseries\slshape\textcolor{green!50!black}]{/**}{*/},
+  tabsize=4,
+  showstringspaces=false,
+  breaklines=true, breakatwhitespace=true,
+  prebreak={\hbox{\quad\textcolor{red}{$\rhookswarrow$}}},
+  postbreak={\hbox{\textcolor{red}{$\lhookrightarrow$}}},
+  breakindent={-8pt}, breakautoindent=false,
+  numbers=left, numberstyle=\tiny,
+  frameshape={RYR}{N}{N}{YYY} %frame=tb,frameround=tttt
+}
+
+\lstdefinestyle{colorBash}{
+  language=bash,
+  basicstyle=\ttfamily,
+  keywordstyle=\textcolor{blue},
+  stringstyle=\slshape\textcolor{red!70!black},
+  commentstyle=\slshape\textcolor{green!50!black},
+  morecomment=[s][\bfseries\slshape\textcolor{green!50!black}]{/**}{*/},
+  tabsize=4,
+  showstringspaces=false,
+  breaklines=true, breakatwhitespace=true,
+  prebreak={\hbox{\quad\textcolor{red}{$\rhookswarrow$}}},
+  postbreak={\hbox{\textcolor{red}{$\lhookrightarrow$}}},
+  breakindent={-8pt}, breakautoindent=false,
+  numbers=left, numberstyle=\tiny,
+  frameshape={RYR}{N}{N}{YYY} %frame=tb,frameround=tttt
+}
+
+\title{Static visitor}
+\author{Jens Emil Fink Højriis}
+\begin{document}
+  \maketitle
+  \lstinputlisting[style=colorC++,caption={./include/json\_input.hpp}]{./include/json_input.hpp}
+  \lstinputlisting[style=colorC++,caption={./include/json\_output.hpp}]{./include/json_output.hpp}
+  \lstinputlisting[style=colorC++,caption={./include/meta.hpp}]{./include/meta.hpp}
+  \lstinputlisting[style=colorC++,caption={./src/data.hpp}]{./src/data.hpp}
+  \lstinputlisting[style=colorC++,caption={./src/json\_input\_test.cpp}]{./src/json_input_test.cpp}
+  \lstinputlisting[style=colorC++,caption={./src/json\_output\_test.cpp}]{./src/json_output_test.cpp}
+  \lstinputlisting[style=colorC++,caption={./src/meta\_test.cpp}]{./src/meta_test.cpp}
+  \lstinputlisting[style=colorBash,caption={./CMakeLists.txt}]{./CMakeLists.txt}
+  \lstinputlisting[style=colorBash,caption={./README.md}]{./README.md}
+  \lstinputlisting[style=colorBash,caption={./src/CMakeLists.txt}]{./src/CMakeLists.txt}
+\end{document}
